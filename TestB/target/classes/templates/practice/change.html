@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>課題変更</title>
+</head>
+
+<body>
+
+    <h2>課題変更(change.html)</h2>
+
+    <form th:method="post" th:object="${practice}" th:action="@{/practice/change/id={id}(id=*{id})}">
+      <ul>
+            <li th:each="error : ${#fields.detailedErrors()}" style="color: red">
+                <span th:text="${error.message}"></span>
+            </li>
+        </ul>
+        <label>ID:<input type="text" th:field="*{id}"></label><br>
+        <label>ガネーシャの課題:<input type="text" th:field="*{issue}"></label><br>
+        <label>難易度:<select name="level" th:field="*{level}">
+        <option value="☆" label="☆" selected>☆</option><option value="☆☆" label="☆☆" selected>☆☆</option><option value="☆☆☆" label="☆☆☆" selected>☆☆☆</option></select></label><br>
+        <label>優先度:<select name="priority" th:field="*{priority}">
+        <option value="☆" label="☆" selected>☆</option><option value="☆☆" label="☆☆" selected>☆☆</option><option value="☆☆☆" label="☆☆☆" selected>☆☆☆</option></select></label><br>
+        <button>変更</button>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>課題詳細</title>
+</head>
+
+<body>
+
+    <h2>課題詳細表示(details.html)</h2>
+    <div th:object="${priority}">
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>ガネーシャの課題</th>
+                <th>難易度</th>
+                <th>優先度</th>
+            </tr>
+            <tr>
+                <td th:text="*{id}"></td>
+                <td th:text="*{issue}"></td>
+                <td th:text="*{level}"></td>
+                <td th:text="*{priority}"></td>
+            </tr>
+         </table>
+       </div>
+
+</body>
+</html>

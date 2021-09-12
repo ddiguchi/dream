@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+  <mapper namespace="com.example.demo.repository.PracticeMapper">
+
+  <resultMap type="com.example.demo.model.Practice" id="practice"><!--  id属性は任意の値 -->
+    <!--  columnはSQLのカラム　propertyはエンティティクラスのフィールド -->
+    <id column="id" property="id"/>
+    <result column="issue" property="issue"/>
+    <result column="level" property="level"/>
+    <result column="priority" property="priority"/>
+  </resultMap>
+
+  <select id="findOne" resultMap="practice">
+    select  *
+    from    practice
+    where   id = #{id}
+  </select>
+
+  <select id="find" resultType="com.example.demo.model.Practice">
+    select  *
+    from    practice
+  </select>
+
+  <insert id="insertOne">
+    insert into practice (
+        id,
+        issue,
+        level,
+        priority
+    )
+    values (
+        #{id},
+        #{issue},
+        #{level},
+        #{priority}
+    )
+  </insert>
+
+  <update id="updateOne">
+    update  practice
+    set     issue = #{issue},
+            level = #{level},
+            priority = #{priority}
+    where   id = #{id}
+  </update>
+
+  <delete id="deleteOne">
+        delete from
+        practice
+    where
+        id = #{id}  
+  </delete>
+
+  </mapper>

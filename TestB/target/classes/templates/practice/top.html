@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>夢を叶えるリスト</title>
+</head>
+<body>
+
+    <h1>夢を叶えるリスト(top.html)</h1>
+    <body>
+      <input type="date"></input><!-- 日付入力 -->
+    </body>
+    <p>ガネーシャの課題一覧</p>
+
+    <div th:if="!${practice.size()}">
+        <p>登録されている課題はありません</p>
+    </div>
+
+    <a th:href="@{/practice/register}"><!-- URL「/users/register」生成 -->
+        <button>新しい課題を登録</button>
+    </a>
+
+    <table th:if="${practice.size()}" border=1>
+    <!-- DB内のデータがtrue = 0以外の時 -->
+
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>ガネーシャの課題</th>
+                <th>難易度</th>
+                <th>優先度</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>達成した？</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr th:each="practice:${practice}" th:object="${practice}">
+                <td th:text="*{id}"></td>
+                <td th:text="*{issue}"></td>
+                <td th:text="*{level}"></td>
+                <td th:text="*{priority}"></td>
+                <td><a th:href="@{/practice/details/id={id}(id=*{id})}"><button>詳細</button></a></td>
+                <td><a th:href="@{/practice/change/id={id}(id=*{id})}"><button>変更</button></a></td>
+                <td>
+                  <form th:method="post" th:action="@{/practice/delete/id={id}(id=*{id})}"><button>削除</button></form>
+                </td>
+            
+                <td>
+                  <input type="checkbox" name="tassei" checked="checked">達成済み
+                </td>
+             </tr>
+        </tbody>
+
+    </table>
+    <button>記録する</button>
+    <h1>本日のポイント</h1>
+    <p>0pt</p>
+    
+</body>
