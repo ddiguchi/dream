@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.example.demo.model.Practice;
 import com.example.demo.repository.PracticeMapper;
 
-
 @Service
 public class PracticeService {
 
@@ -40,5 +39,7 @@ public class PracticeService {
     public void deleteOne(Practice u) {
         mapper.deleteOne(u);
     }
+    
+
 
 }
