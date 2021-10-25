@@ -99,15 +99,16 @@ public class PracticeController {
         service.deleteOne(u);
         return "redirect:/practice";
     }
+    //number型のテキストボックスからの数値を[記録する]を押下時に[○○Pt]と表示
     @RequestMapping("/practice")
     public String form(Model model){
       model.addAttribute("form", new Form());
       return "practice/top";
     }
     @RequestMapping(value="/practice", method = RequestMethod.POST)
-    public String result(@ModelAttribute Form form, Model model){
+    public String sumTotal(@ModelAttribute Form form, Model model){
   	       form.sumTotal();
-  	      model.addAttribute("form", form);
+  	      model.addAttribute("form", model);
   	       return "practice/top";
   	       }
 

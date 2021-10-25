@@ -50,15 +50,15 @@
             
                 <td>
                   <form action="#" th:action="@{/practice}" th:object="${form}" method="post">
-                  <input type="number"   >達成済み
+                  <input type="number" th:field="*{num[i]}">
                   </form>
                 </td>
              </tr>
         </tbody>
 
     </table>
-    <button>記録する</button>
+    <p><input type="submit" value="記録する" /></p>
     <h1>本日のポイント</h1>
-    
-    
+    <p th:text="'答え: ' + ${form.getTotal()}" />
+
 </body>
