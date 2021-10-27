@@ -3,6 +3,7 @@ package com.example.demo.form;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Form {
 	private int total=0;
 	private int num=0;
@@ -22,10 +23,14 @@ public class Form {
 	  }
 
   public void sumTotal() {
-    List<String> stringList = new ArrayList<String>();
-    int[] num = new int[stringList.size()];
-        for (int i = 0; i < stringList.size(); i++) {
+	  List<Integer> list = new ArrayList<>();
+	  int[] num = new int[list.size()];
+        for (int i  =0 ; i < list.size() ; i++ ) {
     	total += num[i];
-    }    
-  }
+       }  
+       setTotal(total); 
+  	}
 }
+
+
+
