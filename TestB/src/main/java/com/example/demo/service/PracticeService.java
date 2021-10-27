@@ -9,12 +9,12 @@ import org.springframework.transaction.annotation.Transactional;
 import com.example.demo.model.Practice;
 import com.example.demo.repository.PracticeMapper;
 
-
 @Service
 public class PracticeService {
 
     @Autowired
     PracticeMapper mapper;
+    PracticeService service;
     @Transactional
     //select１件
     public Practice getUserOne(String id) {
@@ -24,6 +24,7 @@ public class PracticeService {
     public List<Practice> getList() {
         return mapper.find();
     }
+   
 
     //insert
     
@@ -40,5 +41,7 @@ public class PracticeService {
     public void deleteOne(Practice u) {
         mapper.deleteOne(u);
     }
+    
+
 
 }

@@ -1,8 +1,6 @@
 package com.example.demo.controller;
 
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +13,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.example.demo.form.Form;
 import com.example.demo.model.Practice;
 import com.example.demo.service.PracticeService;
 
@@ -99,17 +99,17 @@ public class PracticeController {
         service.deleteOne(u);
         return "redirect:/practice";
     }
-    @GetMapping("/")
-    public String helloWorldCheckBox(Model model) {   
-      model.addAttribute("animalCheckBox",getCheckBoxAnimel());
-      return "index";
+    //number型のテキストボックスからの数値を[記録する]を押下時に[○○Pt]と表示
+    @RequestMapping("/practice")
+    public String form(Model model){
+      model.addAttribute("form", new Form());
+      return "practice/top";
     }
-    private Map<String ,String> getCheckBoxAnimel(){
-      Map<String, String> checkBoxAnimal = new LinkedHashMap<String , String>();
-      checkBoxAnimal.put("dolphin", "いるか");
-      checkBoxAnimal.put("rabbit", "うさぎ");
-      checkBoxAnimal.put("penguin", "ぺんぎん");
-      return checkBoxAnimal;
-    }
+    @RequestMapping(value="/practice", method = RequestMethod.POST)
+    public String sumTotal(@ModelAttribute Form form, Model model){
+  	       form.sumTotal();
+  	      model.addAttribute("form", model);
+  	       return "practice/top";
+  	       }
 
 }

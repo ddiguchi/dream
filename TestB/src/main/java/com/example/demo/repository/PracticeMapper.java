@@ -16,6 +16,7 @@ public interface PracticeMapper {
 
     //select全件
     public List<Practice> find();
+    
 
     //insert
     public void insertOne(Practice u);

@@ -49,14 +49,16 @@
                 </td>
             
                 <td>
-                  <input type="checkbox" name="tassei" checked="checked">達成済み
+                  <form action="#" th:action="@{/practice}" th:object="${form}" method="post">
+                  <input type="number" th:field="*{num[i]}">
+                  </form>
                 </td>
              </tr>
         </tbody>
 
     </table>
-    <button>記録する</button>
+    <p><input type="submit" value="記録する" /></p>
     <h1>本日のポイント</h1>
-    <p>0pt</p>
-    
+    <p th:text="${form.getTotal()}" /> 
+
 </body>
